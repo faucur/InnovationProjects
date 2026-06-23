@@ -73,7 +73,16 @@
   .filters button:hover{border-color:var(--teal)}
   .filters button.active{background:var(--teal);color:var(--navy-deep);border-color:var(--teal)}
 
-  /* Cards */
+  /* Cards & Sections */
+  .section-group{margin:32px 0}
+  .section-group.hold{border-left:5px solid var(--yellow);background:rgba(245,197,24,.03);border-radius:12px;padding:22px}
+  .section-group.prog{border-left:5px solid var(--green);background:rgba(95,217,138,.03);border-radius:12px;padding:22px}
+  .section-group.deli{border-left:5px solid var(--teal);background:rgba(37,226,204,.03);border-radius:12px;padding:22px}
+  .section-group h3{font-size:18px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .section-group.hold h3{color:var(--yellow)}
+  .section-group.prog h3{color:var(--green)}
+  .section-group.deli h3{color:var(--teal)}
+  .section-group h3 .count{font-size:14px;color:var(--mute);font-weight:600}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
   .opp{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 22px 20px;
     display:flex;flex-direction:column;gap:14px;transition:.2s}
@@ -159,7 +168,7 @@
     <button data-f="hold">On hold (2)</button>
   </div>
 
-  <div class="grid" id="grid"></div>
+  <div id="sections-container"></div>
 
   <div class="section-h"><span class="dot"></span><h2>Innovation &amp; Transformation Topics</h2></div>
   <div class="innov" id="innov"></div>
@@ -173,7 +182,7 @@
 
 <script>
 const OPPS=[
- {c:"Edenred «Quality»",p:"iX Hero",s:"hold",txt:"Il cliente sta lavorando per attivare la registrazione delle chiamate sulla propria piattaforma di telefonia; ha recentemente espresso l'interesse a partire con iXHero a settembre.",next:"Riallinearsi con il cliente per impostare l'avvio a settembre.",due:"Avvio previsto: Settembre 2026",sh:"Cinzia Bonaiti, Diego Zecchino"},
+ {c:"Edenred[Team Quality]",p:"iX Hero",s:"hold",txt:"Il cliente sta lavorando per attivare la registrazione delle chiamate sulla propria piattaforma di telefonia; ha recentemente espresso l'interesse a partire con iXHero a settembre.",next:"Riallinearsi con il cliente per impostare l'avvio a settembre.",due:"Avvio previsto: Settembre 2026",sh:"Cinzia Bonaiti, Diego Zecchino"},
  {c:"ACI",p:"iX Hero",s:"hold",txt:"Il Legal CNX ha sistemato la clausola sulla risoluzione del rapporto nell'Amendment che regola iXHero, ora pronto per l'invio come richiesto da ACI. Il Sales segnala un'escalation in corso: la strategia è attenderne la risoluzione e poi condividere il documento da firmare.",next:"A escalation risolta: inviare l'amendment ad ACI per la firma, quindi coinvolgere il team EMEA per il progetto.",due:"Da condividere al cliente entro 1 settimana",sh:"Operation Team"},
  
  {c:"De Agostini",p:"iX Hero · iX Hello · Parloa",s:"prog",txt:"Il Business Case richiesto dal cliente è pronto per l'invio, in attesa della HL Roadmap dal team EMEA Solution.",next:"Ricevere la HL Roadmap dal Solution team e inviarla al cliente.",due:"Martedì 23",sh:"Solution Team"},
@@ -189,39 +198,64 @@ const OPPS=[
  {c:"Esselunga [RFP]",p:"Parloa · iXHello (chatbot)",s:"deli",txt:"È in corso un RFP da completare a luglio. Abbiamo consegnato la nostra offerta nei dettagli richiesti e nei tempi previsti.",next:"Attendere la call di feedback del cliente e l'invito allo step successivo.",due:"In attesa del cliente",sh:"Tribotti, Davide Musotto"},
  {c:"Samsung",p:"iX Hero",s:"deli",txt:"Amendment rivisto e re-inviato al cliente con la correzione richiesta sulla «Data Protection». In attesa del documento firmato.",next:"Ricevere il documento firmato dal cliente.",due:"In attesa del cliente",sh:"Federica Mauri, Davide Musotto"},
  {c:"Luxottica",p:"iX Hero",s:"deli",txt:"Presentato ConnectLingua e condiviso il deck. In parallelo abbiamo proposto un nuovo incontro per esplorare la nostra soluzione iXSuite.",next:"In attesa del feedback del cliente sui prossimi step per la soluzione RTT ConnectLingua già presentata e sulle disponibilità per la demo iXSuite.",due:"In attesa del cliente",sh:"Nicola Benedetto (EssiLux)"},
- {c:"Unipol Rental",p:"TPS",s:"deli",txt:" Il cliente è interessato ad automatizzare per la Leads Generation . Ha avuto luogo un primo incontro conoscitivo in cui abbiamo condiviso degli Use case con KPI e cadute per step.",next:"Il cliente chiede un approfondimento lunedi 29. Abbiamo chiesto i temi da preparare per coinvolgere le nostre persone e rendere piu efficace ",due:"luned 29 (TBC) ",sh:"Luca Faroldi"}
+ {c:"Unipol Rental",p:"TPS",s:"deli",txt:"Il cliente è interessato ad automatizzare per la Leads Generation . Ha avuto luogo un primo incontro conoscitivo in cui abbiamo condiviso degli Use case con KPI e cadute per step.",next:"Il cliente chiede un approfondimento lunedi 29. Abbiamo chiesto i temi da preparare per coinvolgere le nostre persone e rendere piu efficace ",due:"luned 29 (TBC) ",sh:"Luca Faroldi"}
 
 ];
 
 const LABEL={hold:"On hold",prog:"In progress",deli:"Delivered"};
+const LABELS_IT={hold:"In stand-by",prog:"In lavorazione",deli:"Consegnate"};
+const ICON_ORDER={hold:1,prog:2,deli:3};
 
-function render(filter){
-  const g=document.getElementById('grid');
-  g.innerHTML='';
-  OPPS.filter(o=>filter==='all'||o.s===filter).forEach(o=>{
-    const el=document.createElement('div');
-    el.className='opp';
-    el.innerHTML=`
-      <div class="top">
-        <div><div class="client">${o.c}</div><div class="product">${o.p}</div></div>
-        <span class="badge ${o.s}">${LABEL[o.s]}</span>
-      </div>
-      <div class="status-text">${o.txt}</div>
-      <div class="rows">
-        <div class="row"><span class="k">Prossimo step</span><span class="v">${o.next}</span></div>
-        <div class="row due"><span class="k">Due date</span><span class="v">${o.due}</span></div>
-        <div class="row"><span class="k">Stakeholder</span><span class="v">${o.sh}</span></div>
-      </div>`;
-    g.appendChild(el);
+function renderSections(filter){
+  const container=document.getElementById('sections-container');
+  container.innerHTML='';
+  
+  const statuses=['hold','prog','deli'];
+  
+  statuses.forEach(status=>{
+    const items=OPPS.filter(o=>filter==='all'||o.s===filter).filter(o=>o.s===status);
+    if(items.length===0&&filter!=='all')return;
+    
+    const section=document.createElement('div');
+    section.className=`section-group ${status}`;
+    
+    const title=document.createElement('h3');
+    const labels=['🔴 In stand-by','🟢 In lavorazione','🔵 Consegnate'];
+    const icons=['⏸','⚙️','✓'];
+    title.innerHTML=`${icons[ICON_ORDER[status]-1]} ${LABELS_IT[status]} <span class="count">(${items.length})</span>`;
+    section.appendChild(title);
+    
+    const grid=document.createElement('div');
+    grid.className='grid';
+    
+    items.forEach(o=>{
+      const el=document.createElement('div');
+      el.className='opp';
+      el.innerHTML=`
+        <div class="top">
+          <div><div class="client">${o.c}</div><div class="product">${o.p}</div></div>
+          <span class="badge ${o.s}">${LABEL[o.s]}</span>
+        </div>
+        <div class="status-text">${o.txt}</div>
+        <div class="rows">
+          <div class="row"><span class="k">Prossimo step</span><span class="v">${o.next}</span></div>
+          <div class="row due"><span class="k">Due date</span><span class="v">${o.due}</span></div>
+          <div class="row"><span class="k">Stakeholder</span><span class="v">${o.sh}</span></div>
+        </div>`;
+      grid.appendChild(el);
+    });
+    
+    section.appendChild(grid);
+    container.appendChild(section);
   });
 }
-render('all');
+renderSections('all');
 
 document.getElementById('filters').addEventListener('click',e=>{
   if(e.target.tagName!=='BUTTON')return;
   document.querySelectorAll('#filters button').forEach(b=>b.classList.remove('active'));
   e.target.classList.add('active');
-  render(e.target.dataset.f);
+  renderSections(e.target.dataset.f);
 });
 
 const INNOV=[
