@@ -102,6 +102,7 @@
   .row .k{color:var(--mute);font-weight:600;min-width:88px;text-transform:uppercase;letter-spacing:.4px;font-size:10.5px;padding-top:1px}
   .row .v{color:var(--white);font-weight:500}
   .row.due .v{color:var(--yellow);font-weight:600}
+  .row.due.past .v{color:#F55E5E; font-weight:700}
 
   /* Innovation section */
   .section-h{margin:46px 0 18px;display:flex;align-items:center;gap:12px}
@@ -186,12 +187,12 @@ const OPPS=[
  {c:"Edenred[Team Quality]",p:"iX Hero",s:"hold",txt:"Il cliente sta lavorando per attivare la registrazione delle chiamate sulla propria piattaforma di telefonia; ha recentemente espresso l'interesse a partire con iXHero a settembre.",next:"Riallinearsi con il cliente per impostare l'avvio a settembre.",due:"Avvio previsto: Settembre 2026",sh:"Cinzia Bonaiti, Diego Zecchino"},
  {c:"ACI",p:"iX Hero",s:"hold",txt:"Il Legal CNX ha sistemato la clausola sulla risoluzione del rapporto nell'Amendment che regola iXHero, ora pronto per l'invio come richiesto da ACI. Il Sales segnala un'escalation in corso: la strategia è attenderne la risoluzione e poi condividere il documento da firmare.",next:"A escalation risolta: inviare l'amendment ad ACI per la firma, quindi coinvolgere il team EMEA per il progetto.",due:"Da condividere al cliente entro 1 settimana",sh:"Operation Team"},
  
- {c:"De Agostini",p:"iX Hero · iX Hello · Parloa",s:"prog",txt:"Il Business Case richiesto dal cliente è pronto per l'invio, in attesa della HL Roadmap dal team EMEA Solution.",next:"Ricevere la HL Roadmap dal Solution team e inviarla al cliente.",due:"Martedì 23",sh:"Solution Team"},
+ {c:"De Agostini",p:"iX Hero · iX Hello · Parloa",s:"prog",txt:"Il Business Case richiesto dal cliente è pronto per l'invio, in attesa della HL Roadmap dal team EMEA Solution.",next:"Ricevere la HL Roadmap dal Solution team e inviarla al cliente.",due:"23 Giugno",sh:"Solution Team"},
  {c:"De'Longhi",p:"RTT (ConnectLingua)",s:"prog",txt:"Il cliente richiede una nuova Demo RTT basata sulla soluzione «ConnectLingua»; il commerciale ha richiesto le disponibilità del cliente per organizzare la sessione.",next:"L'Account Manager sta concordando le date per la Live Demo con il cliente.",due:"Settimana #26",sh:"Andrea Verduci, Chiara Bearzatti"},
- {c:"Unisalute",p:"iX Hero",s:"prog",txt:"Amendment iXHero in fase di redazione dal Legal CNX. Si tratta solo di aggiornare le ragioni sociali (Concentrix al posto di WebHelp, per esigenze di requisiti).",next:"Una volta pronto, inviare l'amendment al cliente per la firma.",due:"26 Giugno",sh:"Legal CNX, Laura Agnano"},
+ {c:"Unisalute",p:"iX Hero",s:"prog",txt:"Amendment iXHero in fase di redazione dal Legal CNX. Si tratta solo di aggiornare le ragioni sociali (Concentrix al posto di WebHelp, per esigenze di requisiti).",next:"Una volta pronto, inviare l'amendment al cliente per la firma.",due:"23 Giugno",sh:"Legal CNX, Laura Agnano"},
  {c:"Edenred «B2B Sales»",p:"Microsoft Dynamics Suite",s:"prog",txt:"Lo scorso 19 Giugno si è tenuto un allineamento Tech col cliente in vista della sua visita presso il sito di Lecce, il team concentrix ha esposto con successo la soluzione di automazione per accelerare le vendite B2B pernsata per Edenred. L'elevato livello di automazione libererà il tempo dei venditori dedicandolo alla pura vendita: dal 20% all'80%. In parallelo il cliente chiede piccole ecolutive nel breve termine sull' attuale icDialer:  1) Funzione di geolocalizzazione 2) Funzione chiamata Mobile 3) introduzione di canale Whatsapp Business per 16 agenti 4) estensione delle attuali licenze da 8 a 24",next:"Progetto Automazione(lungo termine): in preparazione una quotazione economica ed una roadmap per raggiungere la massima automazione in tre fasi distinte | Progetto Piccole evolutive ixDialer: Preparazione Stima economica e roadmap per le richieste	",due:"Venerdì 26 Giugno.  ",sh:"Cristina Vergani"},
  {c:"Linear[RFP]",p:"iX Hero",s:"prog",txt:"RFP in corso — il cliente ci ha ingaggiato di recente per la produzione delle stime economiche per la parte di automazione ",next:" martedi 23 Giugno, allineamento interno per indirizzare i task",due:"3 luglio",sh:"Vito Tummarello, Laura Agnano, Nicola"},
- {c:"Mimanera",p:"TPS",s:"prog",txt:"Il prospect è in cerca di un partner per lo sviluppo di una logica di BNPL(buy Now Pay Later) per il suo B2B Shopyfy ",next:"Aperta oppotunità ed iniziano processo Bid. E' in corso discussione della richiesta tra Innovation Team e team Solution di EMEA. Raccolta Use case pregressi utili, Preparare un incontro con cliente per scendere nel dettaglio del requisito .",due:"Allineamento interno entro venerdi 26. possibile incontro col cliente nella week #27",sh:"Annamaria Chiadini(resposabile Amministrativo Mimanera)"},
+ {c:"Mimanera",p:"TPS",s:"prog",txt:"Il prospect è in cerca di un partner per lo sviluppo di una logica di BNPL(buy Now Pay Later) per il suo B2B Shopyfy ",next:"Aperta oppotunità ed iniziano processo Bid. E' in corso discussione della richiesta tra Innovation Team e team Solution di EMEA. Raccolta Use case pregressi utili, Preparare un incontro con cliente per scendere nel dettaglio del requisito .",due:"Allineamento interno entro venerdi 26 Giugno. possibile incontro col cliente nella week #27",sh:"Annamaria Chiadini(resposabile Amministrativo Mimanera)"},
 
  {c:"ING",p:"iX Hero",s:"deli",txt:"Kick-off con il cliente completato con successo questa settimana. Abbiamo ricordato al cliente che attendiamo l'amendment iXHero firmato per attivare il delivery team.",next:"In attesa che il cliente ci invii l'amendment iXHero firmato.",due:"In attesa del cliente",sh:"Simona Chiarello, Palmerino D."},
  {c:"DKV",p:"iX Hero",s:"deli",txt:"Documento NDA modificato come da ultime richieste del cliente e condiviso.",next:"In attesa di  riscontro dal cliente.",due:" In attesa del cliente",sh:"Raffaella Anastasio DKV"},
@@ -217,6 +218,31 @@ function updateCounts(){
   document.getElementById('count-hold').textContent=counts.hold;
   document.getElementById('total-count').textContent=counts.deli+counts.prog+counts.hold+counts.stop;
   updateTraffic(counts);
+}
+
+function parseDueDate(dueText){
+  if(!dueText || typeof dueText !== 'string') return null;
+  const months={gennaio:0,febbraio:1,marzo:2,aprile:3,maggio:4,giugno:5,luglio:6,agosto:7,settembre:8,ottobre:9,novembre:10,dicembre:11};
+  const normalized=dueText.toLowerCase().replace(/[,\.]/g,'');
+  const match=normalized.match(/(\d{1,2})\s*([a-zàé]+)/i);
+  if(!match) return null;
+  const day=parseInt(match[1],10);
+  const candidate=match[2];
+  if(!months.hasOwnProperty(candidate)) return null;
+  const yearMatch=normalized.match(/(20\d{2})/);
+  const year=yearMatch?parseInt(yearMatch[1],10):new Date().getFullYear();
+  const date=new Date(year,months[candidate],day);
+  if(Number.isNaN(date.getTime())) return null;
+  date.setHours(0,0,0,0);
+  return date;
+}
+
+function isDuePast(dueText){
+  const dueDate=parseDueDate(dueText);
+  if(!dueDate) return false;
+  const today=new Date();
+  today.setHours(0,0,0,0);
+  return dueDate < today;
 }
 
 function updateTraffic(counts){
@@ -283,6 +309,7 @@ function renderSections(filter){
     grid.className='grid';
     
     items.forEach(o=>{
+      const duePastClass=isDuePast(o.due)?'past':'';
       const el=document.createElement('div');
       el.className='opp';
       el.innerHTML=`
@@ -293,7 +320,7 @@ function renderSections(filter){
         <div class="status-text">${o.txt}</div>
         <div class="rows">
           <div class="row"><span class="k">Prossimo step</span><span class="v">${o.next}</span></div>
-          <div class="row due"><span class="k">Due date</span><span class="v">${o.due}</span></div>
+          <div class="row due ${duePastClass}"><span class="k">Due date</span><span class="v">${o.due}</span></div>
           <div class="row"><span class="k">Stakeholder</span><span class="v">${o.sh}</span></div>
         </div>`;
       grid.appendChild(el);
