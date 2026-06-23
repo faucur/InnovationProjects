@@ -59,7 +59,8 @@
   .overall{display:flex;align-items:center;gap:28px;flex-wrap:wrap;
     background:linear-gradient(150deg,#0e3a44,#0a2a33);border:1px solid var(--line);
     border-radius:18px;padding:26px 30px;margin:24px 0 8px}
-  .overall .ov-text{flex:1;min-width:240px;padding-left:22px;border-left:4px solid var(--yellow)}
+  .overall .ov-text{flex:1;min-width:240px;padding-left:22px;border-left:4px solid var(--yellow);transition:border-color .2s}
+  .overall.ok .ov-text{border-left-color:var(--green)}
   .overall h2{color:var(--yellow);font-size:22px;font-weight:800;margin-bottom:10px}
   .overall p{color:var(--offwhite);font-size:13.5px;line-height:1.6;max-width:560px}
   .traffic{flex:0 0 auto}
@@ -138,34 +139,34 @@
   </header>
 
   <div class="overview">
-    <div class="stat-total"><div class="n">15</div><div class="l">Opportunità attive</div></div>
+    <div class="stat-total"><div class="n" id="total-count">15</div><div class="l">Opportunità attive</div></div>
     <div class="breakdown">
       <span class="dicui">di cui</span>
       <div class="sub-stats">
-        <div class="stat deli"><div class="n">7</div><div class="l">Delivered · in attesa cliente</div></div>
-        <div class="stat prog"><div class="n">6</div><div class="l">In progress · in carico a noi</div></div>
-        <div class="stat hold"><div class="n">2</div><div class="l">On hold · in stand-by</div></div>
+        <div class="stat deli"><div class="n" id="count-deli">8</div><div class="l">Delivered · in attesa cliente</div></div>
+        <div class="stat prog"><div class="n" id="count-prog">6</div><div class="l">In progress · in carico a noi</div></div>
+        <div class="stat hold"><div class="n" id="count-hold">2</div><div class="l">On hold · in stand-by</div></div>
       </div>
     </div>
   </div>
   <div class="overall">
     <div class="ov-text">
       <h2>Overall Status</h2>
-      <p>Alcune opportunità sono in stand-by in attesa di feedback interno, con documenti già pronti. Sono temporaneamente ferme ma ci si attende di sbloccarle a breve. Nessun blocker reale.</p>
+      <p id="ov-text-message">Alcune opportunità sono in stand-by in attesa di feedback interno, con documenti già pronti. Sono temporaneamente ferme ma ci si attende di sbloccarle a breve. Nessun blocker reale.</p>
     </div>
-    <svg class="traffic" width="88" height="200" viewBox="0 0 88 200" xmlns="http://www.w3.org/2000/svg" aria-label="Semaforo, luce gialla accesa">
+    <svg class="traffic" width="88" height="200" viewBox="0 0 88 200" xmlns="http://www.w3.org/2000/svg" aria-label="Semaforo">
       <rect x="6" y="6" width="76" height="188" rx="22" fill="#0a2a33" stroke="#25E2CC" stroke-width="2.5"/>
-      <circle cx="44" cy="46" r="22" fill="#5a1414"/>
-      <circle class="light-on" cx="44" cy="100" r="22" fill="#F5C518"/>
-      <circle cx="44" cy="154" r="22" fill="#103a2a"/>
+      <circle id="red-light" cx="44" cy="46" r="22" fill="#5a1414"/>
+      <circle id="yellow-light" cx="44" cy="100" r="22" fill="#F5C518" class="light-on"/>
+      <circle id="green-light" cx="44" cy="154" r="22" fill="#103a2a"/>
     </svg>
   </div>
 
   <div class="filters" id="filters">
     <button class="active" data-f="all">Tutte (15)</button>
-    <button data-f="deli">Delivered (7)</button>
-    <button data-f="prog">In progress (6)</button>
-    <button data-f="hold">On hold (2)</button>
+    <button data-f="deli">Delivered</button>
+    <button data-f="prog">In progress</button>
+    <button data-f="hold">On hold</button>
   </div>
 
   <div id="sections-container"></div>
@@ -205,6 +206,59 @@ const OPPS=[
 const LABEL={hold:"On hold",prog:"In progress",deli:"Delivered"};
 const LABELS_IT={hold:"In stand-by",prog:"In lavorazione",deli:"Consegnate"};
 const ICON_ORDER={hold:1,prog:2,deli:3};
+
+// Calcola i conteggi per ogni stato
+function updateCounts(){
+  const counts={deli:0,prog:0,hold:0,stop:0};
+  OPPS.forEach(o=>{ if(counts[o.s]!==undefined) counts[o.s]++; });
+  
+  document.getElementById('count-deli').textContent=counts.deli;
+  document.getElementById('count-prog').textContent=counts.prog;
+  document.getElementById('count-hold').textContent=counts.hold;
+  document.getElementById('total-count').textContent=counts.deli+counts.prog+counts.hold+counts.stop;
+  updateTraffic(counts);
+}
+
+function updateTraffic(counts){
+  const overall=document.querySelector('.overall');
+  const red=document.getElementById('red-light');
+  const yellow=document.getElementById('yellow-light');
+  const green=document.getElementById('green-light');
+  const message=document.getElementById('ov-text-message');
+  const hasHold=counts.hold>0;
+  const hasStop=counts.stop>0;
+  const onlyDeliProg=!hasHold && !hasStop;
+
+  overall.classList.toggle('ok', onlyDeliProg);
+
+  red.classList.remove('light-on');
+  yellow.classList.remove('light-on');
+  green.classList.remove('light-on');
+
+  if(hasHold && !hasStop){
+    overall.classList.remove('ok');
+    yellow.classList.add('light-on');
+    yellow.style.fill='#F5C518';
+    green.style.fill='#103a2a';
+    red.style.fill='#5a1414';
+    message.textContent='Alcune opportunità sono in stand-by per un tema decisionale interno a Concentrix. Sono temporaneamente ferme ma ci si attende di sbloccarle a breve. Nessun blocker reale.';
+  } else if(onlyDeliProg){
+    green.classList.add('light-on');
+    green.style.fill='#5FD98A';
+    yellow.style.fill='#103a2a';
+    red.style.fill='#5a1414';
+    message.textContent='Tutte le opportunità sono in corso di lavorazione o in attesa di feedback dal cliente. Nessun ostacolo o rallentamento';
+  } else {
+    overall.classList.remove('ok');
+    red.classList.add('light-on');
+    red.style.fill='#E14444';
+    yellow.style.fill='#103a2a';
+    green.style.fill='#103a2a';
+    message.textContent='È presente un tema critico da verificare internamente, al momento il semaforo segnala attenzione.';
+  }
+}
+
+updateCounts();
 
 function renderSections(filter){
   const container=document.getElementById('sections-container');
