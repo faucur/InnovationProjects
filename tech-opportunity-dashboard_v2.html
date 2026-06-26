@@ -125,9 +125,43 @@
   footer .pow{color:var(--teal);font-weight:600}
 
   @media(max-width:520px){.row .k{min-width:74px}.wrap{padding:24px 16px 48px}}
+
+  /* Login gate */
+  #gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(rgba(6,34,43,.9),rgba(6,34,43,.96));backdrop-filter:blur(4px)}
+  #gate.hidden{display:none}
+  .login-card{width:min(360px,90vw);background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:34px 30px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+  .login-card .brand{color:var(--teal);font-weight:700;font-size:12px;letter-spacing:.5px;
+    text-transform:uppercase;margin-bottom:8px}
+  .login-card h2{font-size:22px;font-weight:800;margin-bottom:6px}
+  .login-card p{color:var(--mute);font-size:13px;margin-bottom:22px}
+  .login-card label{display:block;font-size:12px;color:var(--mute);margin:0 0 6px 2px}
+  .login-card input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);
+    background:var(--navy-deep);color:var(--offwhite);font-family:inherit;font-size:14px;margin-bottom:16px;outline:none}
+  .login-card input:focus{border-color:var(--teal)}
+  .login-card button{width:100%;padding:12px;border:none;border-radius:10px;cursor:pointer;
+    background:var(--teal);color:var(--ink);font-family:inherit;font-weight:700;font-size:14px}
+  .login-card button:hover{background:var(--teal-mid)}
+  .login-err{color:var(--magenta);font-size:12.5px;min-height:18px;margin-bottom:10px}
 </style>
 </head>
 <body>
+
+<div id="gate">
+  <div class="login-card">
+    <div class="brand">Concentrix · Italy Innovation Team</div>
+    <h2>Accesso Riservato</h2>
+    <p>Inserisci le credenziali per visualizzare la dashboard.</p>
+    <label for="g-user">Utente</label>
+    <input id="g-user" type="text" autocomplete="username" autocapitalize="off">
+    <label for="g-pass">Password</label>
+    <input id="g-pass" type="password" autocomplete="current-password">
+    <div class="login-err" id="g-err"></div>
+    <button id="g-btn">Entra</button>
+  </div>
+</div>
+
 <div class="wrap">
 
   <header>
@@ -187,6 +221,36 @@
   </footer>
 
 </div>
+
+<script>
+/* ===== Login gate (credenziale statica unica) ===== */
+const AUTH = { user: "newreality", pass: "CNX-Vimercate25@" };  // <-- modifica qui
+const GATE_KEY = "cnx_dash_auth";
+
+(function(){
+  const gate = document.getElementById('gate');
+  const btn  = document.getElementById('g-btn');
+  const err  = document.getElementById('g-err');
+  const u    = document.getElementById('g-user');
+  const p    = document.getElementById('g-pass');
+
+  if (sessionStorage.getItem(GATE_KEY) === "ok") { gate.classList.add('hidden'); }
+
+  function tryLogin(){
+    if (u.value.trim() === AUTH.user && p.value === AUTH.pass) {
+      sessionStorage.setItem(GATE_KEY, "ok");
+      gate.classList.add('hidden');
+    } else {
+      err.textContent = "Credenziali non valide.";
+      p.value = "";
+      p.focus();
+    }
+  }
+  btn.addEventListener('click', tryLogin);
+  [u,p].forEach(el => el.addEventListener('keydown', e => { if(e.key==='Enter') tryLogin(); }));
+  u.focus();
+})();
+</script>
 
 <script>
 const OPPS=[
