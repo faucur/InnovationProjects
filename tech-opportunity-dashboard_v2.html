@@ -136,7 +136,7 @@
       <h1>Tech Opportunity <span>Status</span><br>for Italy</h1>
       <div class="sub">Executive summary · Pipeline iXHero &amp; iXSuite + Innovation Topics</div>
     </div>
-    <div class="date-badge">24 Giugno 2026</div>
+    <div class="date-badge">26 Giugno 2026</div>
   </header>
 
   <div class="overview">
@@ -175,6 +175,12 @@
   <div class="section-h"><span class="dot"></span><h2>Innovation &amp; Transformation Topics</h2></div>
   <div class="innov" id="innov"></div>
 
+  <div class="section-h"><span class="dot"></span><h2>GPO Topics</h2></div>
+  <div class="innov" id="gpo"></div>
+
+  <div class="section-h"><span class="dot"></span><h2>TPS topics</h2></div>
+  <div class="innov" id="tps"></div>
+
   <footer>
     <span>© 2026 Concentrix Corp. All rights reserved. Confidential and proprietary.</span>
     <span class="pow">Powering a world that works</span>
@@ -184,23 +190,23 @@
 
 <script>
 const OPPS=[
- {c:"Edenred[Team Quality]",p:"iX Hero",s:"hold",txt:"Il cliente sta lavorando per attivare la registrazione delle chiamate sulla propria piattaforma di telefonia; ha recentemente espresso l'interesse a partire con iXHero a settembre.",next:"Riallinearsi con il cliente per impostare l'avvio a settembre.",due:"Avvio previsto: Settembre 2026",sh:"Cinzia Bonaiti, Diego Zecchino"},
- {c:"ACI",p:"iX Hero",s:"hold",txt:"Il Legal CNX ha sistemato la clausola sulla risoluzione del rapporto nell'Amendment che regola iXHero, ora pronto per l'invio come richiesto da ACI. Il Sales segnala un'escalation in corso: la strategia è attenderne la risoluzione e poi condividere il documento da firmare.",next:"A escalation risolta - inviare l'amendment ad ACI per la firma, quindi coinvolgere il team EMEA per il progetto.",due:"01 luglio",sh:"Operation Team"},
+ {c:"Edenred[Team Quality]",p:"iX Hero",s:"hold",txt:"Il cliente sta lavorando per attivare la registrazione delle chiamate sulla propria piattaforma di telefonia; ha recentemente espresso l'interesse a partire con iXHero a settembre.",next:"Riallinearsi con il cliente per impostare l'avvio a settembre.",owner:"",due:"Avvio atteso dal cliente: Settembre 2026",sh:"Cinzia Bonaiti, Diego Zecchino"},
+ {c:"ACI",p:"iX Hero",s:"hold",txt:"Il Legal CNX ha sistemato la clausola sulla risoluzione del rapporto nell'Amendment che regola iXHero, ora pronto per l'invio come richiesto da ACI. Il Sales segnala un'escalation in corso: la strategia è attenderne la risoluzione e poi condividere il documento da firmare.",next:"A escalation risolta - inviare l'amendment ad ACI per la firma, quindi coinvolgere il team EMEA per il progetto.",owner:"",due:"01 luglio",sh:"Operation Team"},
  
- {c:"De Agostini",p:"iX Hero · iX Hello · Parloa",s:"prog",txt:"Il Business Case richiesto dal cliente è pronto per l'invio, in attesa della HL Roadmap dal team EMEA Solution.",next:"Ricevere la HL Roadmap dal Solution team e inviarla al cliente.",due:"23 Giugno",sh:"Solution Team"},
- {c:"De'Longhi",p:"RTT (ConnectLingua)",s:"prog",txt:"Il cliente richiede una nuova Demo RTT basata sulla soluzione «ConnectLingua»; il commerciale ha richiesto le disponibilità del cliente per organizzare la sessione.",next:"L'Account Manager sta concordando le date per la Live Demo con il cliente.",due:"Settimana #26",sh:"Andrea Verduci, Chiara Bearzatti"},
- {c:"Unisalute",p:"iX Hero",s:"prog",txt:"Amendment iXHero in fase di redazione dal Legal CNX. Si tratta solo di aggiornare le ragioni sociali (Concentrix al posto di WebHelp, per esigenze di requisiti).",next:"Una volta pronto, inviare l'amendment al cliente per la firma.",due:"23 Giugno",sh:"Legal CNX, Laura Agnano"},
- {c:"Edenred «B2B Sales»",p:"Microsoft Dynamics Suite",s:"prog",txt:"Lo scorso 19 Giugno si è tenuto un allineamento Tech col cliente in vista della sua visita presso il sito di Lecce, il team concentrix ha esposto con successo la soluzione di automazione per accelerare le vendite B2B pernsata per Edenred. L'elevato livello di automazione libererà il tempo dei venditori dedicandolo alla pura vendita: dal 20% all'80%. In parallelo il cliente chiede piccole evolutive nel breve termine sull' attuale icDialer:  1) Funzione di geolocalizzazione 2) Funzione chiamata Mobile 3) introduzione di canale Whatsapp Business per 16 agenti 4) estensione delle attuali licenze da 8 a 24",next:"<b>Progetto Automazione(lungo termine)</b>: in preparazione una quotazione economica ed una roadmap per raggiungere la massima automazione in tre fasi distinte | <b>Progetto Piccole evolutive ixDialer</b>: Preparazione Stima economica e roadmap per le richieste	",due:"26 Giugno.  ",sh:" Owen Jones per icdialer, Team B2B per Dynamics, Cristina Vergani"},
- {c:"Linear[RFP]",p:"iX Hero",s:"prog",txt:"RFP in corso — il cliente ci ha ingaggiato di recente per la produzione delle stime economiche per la parte di automazione.   ",next:"In attesa del Team solution per stime su processi automatici (Jas Ghuman) ",due:" 26 Giugno",sh:"Vito Tummarello, Laura Agnano, Nicola, Jas Ghuman CNX"},
- {c:"Mimanera",p:"TPS",s:"prog",txt:"Il prospect è in cerca di un partner per lo sviluppo di una logica di BNPL(buy Now Pay Later) per il suo B2B Shopyfy ",next:"Aperta oppotunità ed ingaggaito team Tech Pagamenti. E' in corso discussione della richiesta tra Innovation Team e team Solution di EMEA. Raccolta Use case pregressi utili, Preparare un incontro con cliente per scendere nel dettaglio del requisito .",due:"In attesa del team EMEA per la preparazione dei contenuti, poi proporremo incontro col cliente nella week #27",sh:"Annamaria Chiadini(resposabile Amministrativo Mimanera),  Team Tech Payment CNX"},
+ {c:"De Agostini",p:"iX Hero · iX Hello · Parloa",s:"prog",txt:"Il Business Case richiesto dal cliente è pronto per l'invio, in attesa della HL Roadmap dal team EMEA Solution.",next:"Ricevere la HL Roadmap dal Solution team e inviarla al cliente.",owner:"",due:"23 Giugno",sh:"Solution Team"},
+ {c:"De'Longhi",p:"RTT (ConnectLingua)",s:"prog",txt:"Il cliente richiede una nuova Demo RTT basata sulla soluzione «ConnectLingua»; il commerciale ha richiesto le disponibilità del cliente per organizzare la sessione.",next:"L'Account Manager sta concordando le date per la Live Demo con il cliente.",owner:"",due:"Settimana #26",sh:"Andrea Verduci, Chiara Bearzatti"},
+ {c:"Unisalute",p:"iX Hero",s:"prog",txt:"Amendment iXHero in fase di redazione dal Legal CNX. Si tratta solo di aggiornare le ragioni sociali (Concentrix al posto di WebHelp, per esigenze di requisiti).",next:"Una volta pronto, inviare l'amendment al cliente per la firma.",owner:"",due:"23 Giugno",sh:"Legal CNX, Laura Agnano"},
+ {c:"Edenred «B2B Sales»",p:"Microsoft Dynamics Suite",s:"prog",txt:"Lo scorso 19 Giugno si è tenuto un allineamento Tech col cliente in vista della sua visita presso il sito di Lecce, il team concentrix ha esposto con successo la soluzione di automazione per accelerare le vendite B2B pernsata per Edenred. L'elevato livello di automazione libererà il tempo dei venditori dedicandolo alla pura vendita: dal 20% all'80%. In parallelo il cliente chiede piccole evolutive nel breve termine sull' attuale icDialer:  1) Funzione di geolocalizzazione 2) Funzione chiamata Mobile 3) introduzione di canale Whatsapp Business per 16 agenti 4) estensione delle attuali licenze da 8 a 24",next:"<b>Progetto Automazione(lungo termine)</b>: in preparazione una quotazione economica ed una roadmap per raggiungere la massima automazione in tre fasi distinte | <b>Progetto Piccole evolutive ixDialer</b>: Preparazione Stima economica e roadmap per le richieste	",owner:"",due:"26 Giugno.  ",sh:" Owen Jones per icdialer, Team B2B per Dynamics, Cristina Vergani"},
+ {c:"Linear[RFP]",p:"iX Hero",s:"prog",txt:"RFP in corso — il cliente ci ha ingaggiato di recente per la produzione delle stime economiche per la parte di automazione.   ",next:"In attesa del Team solution per stime su processi automatici (Jas Ghuman) ",owner:"",due:" 26 Giugno",sh:"Vito Tummarello, Laura Agnano, Nicola, Jas Ghuman CNX"},
+ {c:"Mimanera",p:"TPS",s:"prog",txt:"Il prospect è in cerca di un partner per lo sviluppo di una logica di BNPL(buy Now Pay Later) per il suo B2B Shopyfy ",next:"Aperta oppotunità ed ingaggaito team Tech Pagamenti. E' in corso discussione della richiesta tra Innovation Team e team Solution di EMEA. Raccolta Use case pregressi utili, Preparare un incontro con cliente per scendere nel dettaglio del requisito .",owner:"",due:"In attesa del team EMEA per la preparazione dei contenuti, poi proporremo incontro col cliente nella week #27",sh:"Annamaria Chiadini(resposabile Amministrativo Mimanera),  Team Tech Payment CNX"},
 
- {c:"ING",p:"iX Hero",s:"deli",txt:"Kick-off con il cliente completato con successo questa settimana. Abbiamo ricordato al cliente che attendiamo l'amendment iXHero firmato per attivare il delivery team.",next:"In attesa che il cliente ci invii l'amendment iXHero firmato.",due:"In attesa del cliente",sh:"Simona Chiarello, Palmerino D."},
- {c:"DKV",p:"iX Hero",s:"deli",txt:"Documento NDA modificato come da ultime richieste del cliente e condiviso.",next:"In attesa di  riscontro dal cliente.",due:" In attesa del cliente",sh:"Raffaella Anastasio DKV"},
- {c:"Unipol [RFP]",p:"iX Hero",s:"deli",txt:"La nostra offerta per 800 licenze iXHero (Gamechanger + client + terze parti) è già stata inviata al cliente. Nel frattempo il cliente ha deciso di lanciare un RFP.",next:"In attesa della convocazione ufficiale all'RFP.",due:"Q1/Q2 2027",sh:"Alessandra Lanzarotta, Giulia Parrotta"},
- {c:"Esselunga [RFP]",p:"Parloa · iXHello (chatbot)",s:"deli",txt:"È in corso un RFP da completare a luglio. Abbiamo consegnato la nostra offerta nei dettagli richiesti e nei tempi previsti.",next:"Attendere la call di feedback del cliente e l'invito allo step successivo.",due:"In attesa del cliente",sh:"Tribotti, Davide Musotto"},
- {c:"Samsung",p:"iX Hero",s:"deli",txt:"Amendment rivisto e re-inviato al cliente con la correzione richiesta sulla «Data Protection». In attesa del documento firmato.",next:"Ricevere il documento firmato dal cliente.",due:"In attesa del cliente",sh:"Federica Mauri, Davide Musotto"},
- {c:"Luxottica",p:"iX Hero",s:"deli",txt:"Presentato ConnectLingua e condiviso il deck. In parallelo abbiamo proposto un nuovo incontro per esplorare la nostra soluzione iXSuite.",next:"In attesa del feedback del cliente sui prossimi step per la soluzione RTT ConnectLingua già presentata e sulle disponibilità per la demo iXSuite.",due:"In attesa del cliente",sh:"Nicola Benedetto (EssiLux)"},
- {c:"Unipol Rental",p:"TPS",s:"deli",txt:"Il cliente è interessato ad automatizzare per la Leads Generation . Ha avuto luogo un primo incontro conoscitivo in cui abbiamo condiviso degli Use case con KPI e cadute per step.",next:"Il cliente chiede un approfondimento lunedi 29. Abbiamo chiesto i temi da preparare per coinvolgere le nostre persone e rendere piu efficace ",due:"luned 29 (TBC) ",sh:"Luca Faroldi"}
+ {c:"ING",p:"iX Hero",s:"deli",txt:"Kick-off con il cliente completato con successo questa settimana. Abbiamo ricordato al cliente che attendiamo l'amendment iXHero firmato per attivare il delivery team.",next:"In attesa che il cliente ci invii l'amendment iXHero firmato.",owner:"",due:"In attesa del cliente",sh:"Simona Chiarello, Palmerino D."},
+ {c:"DKV",p:"iX Hero",s:"deli",txt:"Documento NDA modificato come da ultime richieste del cliente e condiviso.",next:"In attesa di  riscontro dal cliente.",owner:"",due:" In attesa del cliente",sh:"Raffaella Anastasio DKV"},
+ {c:"Unipol [RFP]",p:"iX Hero",s:"deli",txt:"La nostra offerta per 800 licenze iXHero (Gamechanger + client + terze parti) è già stata inviata al cliente. Nel frattempo il cliente ha deciso di lanciare un RFP.",next:"In attesa della convocazione ufficiale all'RFP.",owner:"",due:"Q1/Q2 2027",sh:"Alessandra Lanzarotta, Giulia Parrotta"},
+ {c:"Esselunga [RFP]",p:"Parloa · iXHello (chatbot)",s:"deli",txt:"È in corso un RFP da completare a luglio. Abbiamo consegnato la nostra offerta nei dettagli richiesti e nei tempi previsti.",next:"Attendere la call di feedback del cliente e l'invito allo step successivo.",owner:"",due:"In attesa del cliente",sh:"Tribotti, Davide Musotto"},
+ {c:"Samsung",p:"iX Hero",s:"deli",txt:"Amendment rivisto e re-inviato al cliente con la correzione richiesta sulla «Data Protection». In attesa del documento firmato.",next:"Ricevere il documento firmato dal cliente.",owner:"",due:"In attesa del cliente",sh:"Federica Mauri, Davide Musotto"},
+ {c:"Luxottica",p:"iX Hero",s:"deli",txt:"Presentato ConnectLingua e condiviso il deck. In parallelo abbiamo proposto un nuovo incontro per esplorare la nostra soluzione iXSuite.",next:"In attesa del feedback del cliente sui prossimi step per la soluzione RTT ConnectLingua già presentata e sulle disponibilità per la demo iXSuite.",owner:"",due:"In attesa del cliente",sh:"Nicola Benedetto (EssiLux)"},
+ {c:"Unipol Rental",p:"TPS",s:"deli",txt:"Il cliente è interessato ad automatizzare per la Leads Generation . Ha avuto luogo un primo incontro conoscitivo in cui abbiamo condiviso degli Use case con KPI e cadute per step.",next:"Il cliente chiede un approfondimento lunedi 29. Abbiamo chiesto i temi da preparare per coinvolgere le nostre persone e rendere piu efficace ",owner:"",due:"luned 29 (TBC) ",sh:"Luca Faroldi"}
 
 ];
 
@@ -340,22 +346,36 @@ document.getElementById('filters').addEventListener('click',e=>{
 });
 
 const INNOV=[
- {h:"Real Time Translation",tag:"Nuove soluzioni",body:"Nuove soluzioni «Real Time Translation» da proporre, con l'obiettivo di renderle il motore di traduzione vocale per le soluzioni iXSuite.",items:["<b>DeepSlate RTT API</b> — possibile API layer per l'RTT, attualmente in valutazione","<b>ConnectLingua</b> (InteractCX) — integrazione out-of-the-box con Genesys"],who:"<b>Oliver Graummitz:</b> possibile API layer per l'RTT. <b>Ali Fry:</b> definire la parte Commercials (pricing, margin, resell %) prima del Delivery. <b>Atif:</b> valorizzare i casi di installazione completati via team Genesys e delivery partner locali."},
- {h:"iXHero UAT 4.4",tag:"In test",body:"iXHero 4.4 — UAT testing attualmente in corso. Aggiornamenti chiave:",items:["Customizable Summarize — riepiloghi conversazione configurabili","Prompt (NBA) — Next Best Action prompting","Intelligence Agent — automazione workflow post-interazione","Hero Connect update","Lingua Araba aggiunta","Security enhancements"],who:""},
- {h:"Delivery Partner per l'Italia",tag:"Ecosistema",body:"In Italia siamo in contatto con i seguenti possibili partner locali per sviluppare soluzioni in autonomia:",items:["Skylabs","Digitouch","Heys","Avanade"],who:""},
- {h:"Reselling Model",tag:"Task-force EMEA",body:"La task-force per la definizione del reselling model per Concentrix EMEA procede sui seguenti workstream:",items:["<b>Model definition</b> — engagement level, responsabilità, training, licenze utente, economics","<b>Legal documentation</b> — definizione della documentazione ufficiale"],who:"<b>Model:</b> Dominique Vignard, Rohit Sehgal (GPO), Ratna Puri (GPO). <b>Legal:</b> Denita Kerluku (ITA), Maria Elena Gil (EMEA)."},
  {h:"E2E Assesment",tag:"Clienti Italiani",body:"in corso la lavorazione degli E2E per DeAgostini, Delonghi, Edenred", items:["<b>DeAgostini</b>","<b>Delonghi</b>","<b>Edenred</b>" ],who:"<b>Coordination</b> Marius Monteanu"}
-
 ];
 
-const iv=document.getElementById('innov');
-INNOV.forEach(i=>{
-  const el=document.createElement('div');
-  el.className='icard';
-  el.innerHTML=`<span class="tag">${i.tag}</span><h3>${i.h}</h3><p>${i.body}</p>
-    <ul>${i.items.map(x=>`<li>${x}</li>`).join('')}</ul>
-    ${i.who?`<div class="who">${i.who}</div>`:''}`;
-  iv.appendChild(el);
+const GPO=[
+ {h:"iXHero UAT 4.4",tag:"In test",body:"iXHero 4.4 — UAT testing attualmente in corso. Aggiornamenti chiave:",items:["Customizable Summarize — riepiloghi conversazione configurabili","Prompt (NBA) — Next Best Action prompting","Intelligence Agent — automazione workflow post-interazione","Hero Connect update","Lingua Araba aggiunta","Security enhancements"],who:""},
+ {h:"Reselling Model",tag:"Task-force EMEA",body:"La task-force per la definizione del reselling model per Concentrix EMEA procede sui seguenti workstream:",items:["<b>Model definition</b> — engagement level, responsabilità, training, licenze utente, economics","<b>Legal documentation</b> — definizione della documentazione ufficiale"],who:"<b>Model:</b> Dominique Vignard, Rohit Sehgal (GPO), Ratna Puri (GPO). <b>Legal:</b> Denita Kerluku (ITA), Maria Elena Gil (EMEA)."}
+];
+
+const TPS=[
+ {h:"Real Time Translation",tag:"Nuove soluzioni",body:"Nuove soluzioni «Real Time Translation» da proporre, con l'obiettivo di renderle il motore di traduzione vocale per le soluzioni iXSuite.",items:["<b>DeepSlate RTT API</b> — possibile API layer per l'RTT, attualmente in valutazione","<b>ConnectLingua</b> (InteractCX) — integrazione out-of-the-box con Genesys"],who:"<b>Oliver Graummitz:</b> possibile API layer per l'RTT. <b>Ali Fry:</b> definire la parte Commercials (pricing, margin, resell %) prima del Delivery. <b>Atif:</b> valorizzare i casi di installazione completati via team Genesys e delivery partner locali."},
+ {h:"Delivery Partner per l'Italia",tag:"Ecosistema",body:"In Italia siamo in contatto con i seguenti possibili partner locali per sviluppare soluzioni in autonomia:",items:["Skylabs","Digitouch","Heys","Avanade"],who:""}
+];
+
+const SECTION_DEFS=[
+  {id:'innov', data:INNOV},
+  {id:'gpo', data:GPO},
+  {id:'tps', data:TPS}
+];
+
+SECTION_DEFS.forEach(({id,data})=>{
+  const container=document.getElementById(id);
+  if(!container) return;
+  data.forEach(i=>{
+    const el=document.createElement('div');
+    el.className='icard';
+    el.innerHTML=`<span class="tag">${i.tag}</span><h3>${i.h}</h3><p>${i.body}</p>
+      <ul>${i.items.map(x=>`<li>${x}</li>`).join('')}</ul>
+      ${i.who?`<div class="who">${i.who}</div>`:''}`;
+    container.appendChild(el);
+  });
 });
 </script>
 </body>
