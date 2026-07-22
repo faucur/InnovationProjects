@@ -110,6 +110,24 @@
   .section-h .dot{width:10px;height:10px;border-radius:50%;background:rgba(147, 112, 219)}
   .innov{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
   .icard{background:linear-gradient(160deg,#103a44,#0c2f38);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .hypercare-shell{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;align-items:start}
+  .hypercare-summary{border-left:4px solid var(--teal)}
+  .hypercare-group{background:linear-gradient(160deg,#103a44,#0c2f38);border:1px solid var(--line);border-radius:18px;padding:22px;border-left:4px solid var(--purple)}
+  .hypercare-group.purple{border-left-color:var(--purple)}
+  .hypercare-group.red{border-left-color:var(--magenta)}
+  .hypercare-group.yellow{border-left-color:var(--yellow)}
+  .hypercare-group h3{font-size:18px;font-weight:800;color:var(--white);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  .hypercare-group h3::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--purple)}
+  .hypercare-group.red h3::before{background:var(--magenta)}
+  .hypercare-group.yellow h3::before{background:var(--yellow)}
+  .hypercare-group ul{list-style:none;display:grid;gap:10px}
+  .hypercare-group li{font-size:13px;color:var(--offwhite);padding:10px 0 10px 18px;position:relative;line-height:1.45;border-bottom:1px solid rgba(255,255,255,.08)}
+  .hypercare-group li:last-child{border-bottom:none}
+  .hypercare-group li::before{content:"";position:absolute;left:0;top:15px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+  .hypercare-group.red li::before{background:var(--magenta)}
+  .hypercare-group.yellow li::before{background:var(--yellow)}
+  .hypercare-client{font-weight:700}
+  .hypercare-meta{display:block;font-size:11.5px;color:var(--mute);margin-top:3px}
   .icard h3{font-size:16px;font-weight:800;color:var(--teal);margin-bottom:6px}
   .icard .tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
     color:var(--navy-deep);background:rgba(147, 112, 219);padding:3px 9px;border-radius:6px;margin-bottom:10px}
@@ -462,10 +480,10 @@ const TPS=[
 ];
 
 const HYPERCARE=[
- {h:"Executive summary",tag:"EMEA Hypercare",body:"16 clienti",items:["<b>Hypercare</b> — 5 clienti","<b>Red Flag</b> — 9 clienti","<b>Yellow Flag</b> — 16 clienti"],who:"<b>Updated:</b> July 20"},
- {h:"Hypercare — 5 clienti",tag:"Hypercare",body:"Clienti attualmente in Hypercare:",items:["Comcast Sky UK","Block Inc","Trip.com","Highmark","BNP Paribas"],who:""},
- {h:"Red Flag — 9 clienti",tag:"Red Flag",body:"Clienti con criticità maggiori:",items:["Super.Com SA","Europcar Mobility Group","Lidl","Deliveroo","Dish","Vueling Lisbon","Inditex","Hennes &amp; Mauritz GBC AB","Doctolib"],who:""},
- {h:"Yellow Flag — 16 clienti",tag:"Yellow Flag",body:"Clienti monitorati con attenzione:",items:["Electrolux","Microsoft O365-Enterprise &amp; SCIM","BARÇA_FASHIONIST","LEASEPLAN","Flender","Volkswagen Digital","Halfords","Vodafone","Onfido","Home Protect","Baur Group","BT Sales HBB Belfast","MEDIACOM","AMAZON","RiksTV","YouFibre"],who:""}
+  {type:"summary", h:"Executive summary", tag:"EMEA Hypercare", body:"Panoramica trasversale delle criticità EMEA con focus su Hypercare, Red Flag e Yellow Flag.", items:["<b>Hypercare</b> — 5 clienti","<b>Red Flag</b> — 9 clienti","<b>Yellow Flag</b> — 16 clienti"], who:"<b>Updated:</b> July 20"},
+  {type:"group", h:"Hypercare 5 clienti", accent:"purple", items:[{name:"Comcast Sky UK", location:"Durban & Cape Town", region:"UK"},{name:"Block Inc", location:"Portugal", region:"Iberia"},{name:"Trip.com", location:"Cairo", region:"MET"},{name:"Highmark", location:"South Africa", region:"UK"},{name:"BNP Paribas", location:"South Africa", region:"UK"}]},
+  {type:"group", h:"Red Flag 9 clienti", accent:"red", items:[{name:"Super.Com SA", location:"Cape Town", region:"UK"},{name:"Europcar Mobility Group", location:"Marrakech / Porto Salvo", region:"France / Iberia"},{name:"Lidl", location:"Istanbul", region:"MET"},{name:"Deliveroo", location:"Egypt / Jordan / Morocco", region:"MET / France"},{name:"Dish", location:"Cape Town", region:"UK"},{name:"Vueling Lisbon", location:"Lisbon", region:"Iberia"},{name:"Inditex", location:"Barcelona", region:"Iberia"},{name:"Hennes & Mauritz GBC AB", location:"Tirana / Ngor Dakar", region:"Italy / France"},{name:"Doctolib", location:"Braga", region:"Iberia"}]},
+  {type:"group", h:"Yellow Flag 16 clienti", accent:"yellow", items:[{name:"Electrolux", location:"Katowice", region:"NORCEE"},{name:"Microsoft O365-Enterprise & SCIM", location:"Cairo", region:"MET"},{name:"BARÇA_FASHIONIST", location:"Barcelona", region:"Iberia"},{name:"LEASEPLAN", location:"Barcelona & Valencia", region:"Iberia"},{name:"Flender", location:"Tbilisi City", region:"MET"},{name:"Volkswagen Digital", location:"Braga", region:"Iberia"},{name:"Halfords", location:"Cape Town", region:"UK"},{name:"Vodafone", location:"Timișoara", region:"NORCEE"},{name:"Onfido", location:"Sofia", region:"NORCEE"},{name:"Home Protect", location:"Cape Town", region:"UK"},{name:"Baur Group", location:"Izmir / Cairo", region:"MET"},{name:"BT Sales HBB Belfast", location:"Belfast", region:"UK"},{name:"MEDIACOM", location:"Cape Town", region:"UK"},{name:"AMAZON", location:"Durban", region:"UK"},{name:"RiksTV", location:"Fredrikstad", region:"NORCEE"},{name:"YouFibre", location:"Cape Town", region:"UK"}]}
 ];
 
 const SECTION_DEFS=[
@@ -478,6 +496,28 @@ const SECTION_DEFS=[
 SECTION_DEFS.forEach(({id,data})=>{
   const container=document.getElementById(id);
   if(!container) return;
+  if(id==='hypercare'){
+    const shell=document.createElement('div');
+    shell.className='hypercare-shell';
+    data.forEach(i=>{
+      if(i.type==='summary'){
+        const el=document.createElement('div');
+        el.className='icard hypercare-summary';
+        el.innerHTML=`<span class="tag">${i.tag}</span><h3>${i.h}</h3><p>${i.body}</p>
+          <ul>${i.items.map(x=>`<li>${x}</li>`).join('')}</ul>
+          ${i.who?`<div class="who">${i.who}</div>`:''}`;
+        shell.appendChild(el);
+      } else {
+        const el=document.createElement('div');
+        el.className=`hypercare-group ${i.accent}`;
+        const itemsMarkup=(i.items||[]).map(item=>`<li><span class="hypercare-client">${item.name}</span><span class="hypercare-meta">Delivery: ${item.location} · Region: ${item.region}</span></li>`).join('');
+        el.innerHTML=`<h3>${i.h}</h3><ul>${itemsMarkup}</ul>`;
+        shell.appendChild(el);
+      }
+    });
+    container.appendChild(shell);
+    return;
+  }
   data.forEach(i=>{
     const el=document.createElement('div');
     el.className='icard';
